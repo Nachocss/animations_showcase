@@ -1,0 +1,16 @@
+{
+    "animations": {
+        "animation": [
+            {
+                "filename": "assets/SpaceX.flr",
+                "animation": "Full",
+                "background": "Colors.black"
+            },
+            {
+                "filename": "assets/LoadingIcon.flr",
+                "animation": "Default",
+                "background": "Colors.black"
+            }
+        ]
+    }
+}
