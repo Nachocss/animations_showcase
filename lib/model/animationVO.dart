@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class AnimationVO {
   final String filename;
   final String animationName;
