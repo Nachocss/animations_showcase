@@ -8,12 +8,11 @@ abstract class ShowcaseEvent extends Equatable {
 }
 
 class ListShowcase extends ShowcaseEvent {
-  final List<Widget> buttons;
 
-  ListShowcase(this.buttons);
+  const ListShowcase();
 
   @override
-  List<Object> get props => [buttons];
+  List<Object> get props => [];
 }
 
 class ShowAnimation extends ShowcaseEvent {
