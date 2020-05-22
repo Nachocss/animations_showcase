@@ -1,7 +1,8 @@
 import 'dart:ui';
 
+import 'package:animations/model/animationDAO.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 
 abstract class ShowcaseState extends Equatable {
   const ShowcaseState();
@@ -11,7 +12,10 @@ abstract class ShowcaseState extends Equatable {
 }
 
 class ShowcaseListing extends ShowcaseState {
-  const ShowcaseListing();
+  final List<Widget> buttons = null; //AnimationDAO.getAnimationsFromJson() as List<Widget>;
+
+  @override
+  List<dynamic> get props => [buttons];
 }
 
 class AnimationPlaying extends ShowcaseState {

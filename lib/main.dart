@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:animations/bloc/simple_bloc_delegate.dart';
 import 'package:animations/widgets/animation_viewer.dart';
 import 'package:animations/widgets/animations_list.dart';
@@ -6,9 +9,21 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/bloc.dart';
+import 'model/animationDAO.dart';
 
-void main() {
+import 'package:flutter/services.dart' show rootBundle;
+
+
+export 'dart:async' show Future;
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   BlocSupervisor.delegate = SimpleBlocDelegate();
+ /* readFileStream();
+ new File('assets/animationsCollection.json').readAsString().then((c) => print(c));
+  AnimationDAO.getAnimationsFromJson();
+*/
   runApp(MyApp());
 }
 
@@ -66,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: BlocBuilder<ShowcaseBloc, ShowcaseState>(
         builder: (context, state) {
-          if (state is ShowcaseListing) return AnimationList();
+          if (state is ShowcaseListing) return AnimationList(buttons: state.buttons);
           if (state is AnimationPlaying) {
             print("main.dart : returning simpleanimationviewer");
             return SimpleAnimationViewer(filename: state.filename, animation: state.animationName, backgroundColor: state.backgroundColor);

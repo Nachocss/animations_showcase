@@ -1,42 +1,65 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:animations/model/animationDAO.dart';
+import 'package:animations/model/animationVO.dart';
 import 'package:animations/bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AnimationList extends StatelessWidget {
-  const AnimationList({Key key}) : super(key: key);
+  List<Widget> buttons;
+  AnimationList({Key key, this.buttons}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     print("Building animation list");
+
+    return FutureBuilder<List<Widget>>(
+        future: AnimationDAO.getAnimationsFromJson(context),
+        builder: (context, AsyncSnapshot<List<Widget>> snapshot) {
+          if (snapshot.hasData) {
+            return Container(
+              child: ListView(
+                shrinkWrap: true,
+                padding: EdgeInsets.all(15.0),
+                children: snapshot.data,
+              ),
+            );
+          } else {
+            return Container(
+              child: ListView(
+                shrinkWrap: true,
+                padding: EdgeInsets.all(15.0),
+                children: buttons ??
+                    <Widget>[
+                      Text("Empty"),
+                    ],
+              ),
+            );
+            ;
+          }
+          ;
+        });
+/*
     return Container(
       child: ListView(
         shrinkWrap: true,
         padding: EdgeInsets.all(15.0),
-        children: <Widget>[
-          FlatButton(
-            onPressed: () => BlocProvider.of<ShowcaseBloc>(context).add(
-              ShowAnimation(
-                  filename: "assets/SpaceX.flr",
-                  animationName: "Full",
-                  backgroundColor: Colors.black),
-            ),
-            child: Text("SpaceX"),
-          ),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-          FlatButton(onPressed: null, child: Text("None")),
-        ],
+        children: buttons ??
+            <Widget>[
+              Text("Empty"),
+              FlatButton(
+                onPressed: () => BlocProvider.of<ShowcaseBloc>(context).add(
+                  ShowAnimation(
+                      filename: "assets/SpaceX.flr",
+                      animationName: "Full",
+                      backgroundColor: Colors.black),
+                ),
+                child: Text("SpaceX"),
+              ),
+            ],
       ),
-    );
+    );*/
   }
 }

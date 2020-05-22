@@ -2,14 +2,16 @@
     "animations": {
         "animation": [
             {
+                "name": "Falcon Heavy",
                 "filename": "assets/SpaceX.flr",
                 "animation": "Full",
-                "background": "Colors.black"
+                "background": "black"
             },
             {
+                "name": "Simple loading icon",
                 "filename": "assets/LoadingIcon.flr",
                 "animation": "Default",
-                "background": "Colors.black"
+                "background": "black"
             }
         ]
     }
