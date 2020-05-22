@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
 
 import 'package:animations/bloc/simple_bloc_delegate.dart';
 import 'package:animations/widgets/animation_viewer.dart';
@@ -9,21 +7,10 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/bloc.dart';
-import 'model/animationDAO.dart';
-
-import 'package:flutter/services.dart' show rootBundle;
-
-
-export 'dart:async' show Future;
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   BlocSupervisor.delegate = SimpleBlocDelegate();
- /* readFileStream();
- new File('assets/animationsCollection.json').readAsString().then((c) => print(c));
-  AnimationDAO.getAnimationsFromJson();
-*/
   runApp(MyApp());
 }
 
@@ -32,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Animations Demo',
+      title: 'Animations showcase',
       home: BlocProvider(
         create: (context) => ShowcaseBloc(),
         child: MyHomePage(title: 'HomePage Test animations'),
@@ -54,37 +41,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String animationName = "StartFrame";
-
-  void _resetAnim() {
-    print("Restarting animmm....");
-    setState(() {
-      animationName = "Full";
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    var actor = FlareActor(
-      'assets/SpaceX.flr',
-      alignment: Alignment.center,
-      fit: BoxFit.contain,
-      animation: "Full",
-      callback: (v) {
-        _resetAnim;
-      },
-    );
+
     return Scaffold(
-      // backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Test de animaciones"),
+        title: Text("Animations showcase by Nacho Sierra"),
       ),
       body: BlocBuilder<ShowcaseBloc, ShowcaseState>(
         builder: (context, state) {
-          if (state is ShowcaseListing) return AnimationList(buttons: state.buttons);
+          if (state is ShowcaseListing) {
+            return AnimationList(buttons: state.buttons);
+          }
           if (state is AnimationPlaying) {
-            print("main.dart : returning simpleanimationviewer");
-            return SimpleAnimationViewer(filename: state.filename, animation: state.animationName, backgroundColor: state.backgroundColor);
+            return SimpleAnimationViewer(filename: state.filename, animation: state.animationName, backgroundColor: state.backgroundColor, name: state.name);
           }
         },
       ),

@@ -22,8 +22,9 @@ class AnimationPlaying extends ShowcaseState {
   final String filename;
   final String animationName;
   final Color backgroundColor;
+  final String name;
 
-  const AnimationPlaying({this.filename, this.animationName, this.backgroundColor});
+  const AnimationPlaying({this.name, this.filename, this.animationName, this.backgroundColor});
 
   @override
   List<Object> get props => [filename, animationName, backgroundColor];

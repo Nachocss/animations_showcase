@@ -20,9 +20,10 @@ class ShowAnimation extends ShowcaseEvent {
   final String filename;
   final String animationName;
   final Color backgroundColor;
+  final String name;
 
   const ShowAnimation(
-      {this.backgroundColor, this.filename, this.animationName});
+      {this.name, this.backgroundColor, this.filename, this.animationName});
 
   @override
   List<Object> get props => throw UnimplementedError();
