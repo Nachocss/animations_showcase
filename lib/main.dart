@@ -1,6 +1,7 @@
 import 'package:animations/bloc/simple_bloc_delegate.dart';
 import 'package:animations/widgets/animation_viewer.dart';
 import 'package:animations/widgets/animations_list.dart';
+import 'package:animations/widgets/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,11 +43,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Animations showcase by Nacho Sierra"),
-      ),
       body: BlocBuilder<ShowcaseBloc, ShowcaseState>(
         builder: (context, state) {
+          if (state is AppStarting) {
+            return SplashScreen();
+          }
           if (state is ShowcaseListing) {
             return AnimationList();
           }

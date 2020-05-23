@@ -10,6 +10,10 @@ abstract class ShowcaseState extends Equatable {
   List<dynamic> get props => [];
 }
 
+class AppStarting extends ShowcaseState {
+  const AppStarting();
+}
+
 class ShowcaseListing extends ShowcaseState {
   const ShowcaseListing();
 }

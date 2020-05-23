@@ -7,8 +7,14 @@ abstract class ShowcaseEvent extends Equatable {
   const ShowcaseEvent();
 }
 
-class ListShowcase extends ShowcaseEvent {
+class StartApp extends ShowcaseEvent {
+  const StartApp();
 
+  @override
+  List<Object> get props => [];
+}
+
+class ListShowcase extends ShowcaseEvent {
   const ListShowcase();
 
   @override

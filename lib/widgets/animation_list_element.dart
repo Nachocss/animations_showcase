@@ -44,6 +44,8 @@ class AnimationListElement {
         return Colors.black;
       case "WHITE":
         return Colors.white;
+      case "REDACCENT":
+        return Colors.redAccent;
     }
    // return Color.fromARGB(100, 20,20,20);
     if (color.startsWith(RegExp("ARGB"))) {

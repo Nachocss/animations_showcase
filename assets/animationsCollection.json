@@ -14,6 +14,12 @@
                 "background": "black"
             },
             {
+                "name": "Splash Screen",
+                "filename": "SplashScreen.flr",
+                "animation": "LongVersion",
+                "background": "redAccent"
+            },
+            {
                 "name": "Loading icon: Triangles",
                 "filename": "LoadingIcon1.flr",
                 "animation": "Default",
