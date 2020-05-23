@@ -33,8 +33,7 @@ class SimpleAnimationViewer extends StatelessWidget {
       ),
       onWillPop: () {
         BlocProvider.of<ShowcaseBloc>(context).add(ListShowcase());
-        return Future(() =>
-            false); //Giving 'true' to this value will make our app to close.
+        return Future(() =>false);
       },
     );
   }

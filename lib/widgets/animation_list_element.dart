@@ -1,18 +1,18 @@
 import 'dart:convert';
 
 import 'package:animations/bloc/bloc.dart';
+import 'package:animations/model/animationVO.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'animationVO.dart';
 
 import 'package:flutter/services.dart' show rootBundle;
 
 export 'dart:async' show Future;
 
-class AnimationDAO {
-  const AnimationDAO();
+class AnimationListElement {
+  const AnimationListElement();
 
   static Future<List<Widget>> getAnimationsFromJson(
       BuildContext context) async {
@@ -29,7 +29,7 @@ class AnimationDAO {
           ShowAnimation(
             filename: animationVO.filename,
             animationName: animationVO.animationName,
-            backgroundColor: Colors.black,
+            backgroundColor: _parseColor(animationVO.backgroundColor),
             name: animationVO.name,
           ),
         ),
@@ -37,5 +37,13 @@ class AnimationDAO {
       ));
     });
     return animationList;
+  }
+
+  static Color _parseColor(String color) {
+    switch (color.toUpperCase()) {
+      case "BLACK": return Colors.black;
+      case "WHITE": return Colors.white;
+    }
+    return Colors.transparent;
   }
 }

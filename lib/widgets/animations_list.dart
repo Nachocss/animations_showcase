@@ -1,4 +1,4 @@
-import 'package:animations/model/animationDAO.dart';
+import 'package:animations/widgets/animation_list_element.dart';
 import 'package:flutter/material.dart';
 
 class AnimationList extends StatelessWidget {
@@ -8,7 +8,7 @@ class AnimationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Widget>>(
-      future: AnimationDAO.getAnimationsFromJson(context),
+      future: AnimationListElement.getAnimationsFromJson(context),
       builder: (context, AsyncSnapshot<List<Widget>> snapshot) {
         if (snapshot.hasData) {
           return Container(

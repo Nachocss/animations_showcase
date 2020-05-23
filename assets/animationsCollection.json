@@ -11,7 +11,7 @@
                 "name": "Simple loading icon",
                 "filename": "LoadingIcon.flr",
                 "animation": "Default",
-                "background": "black"
+                "background": "white"
             }
         ]
     }
