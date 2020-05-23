@@ -8,6 +8,12 @@
                 "background": "black"
             },
             {
+                "name": "Futuristic Dialog Template",
+                "filename": "DialogTemplate.flr",
+                "animation": "Open",
+                "background": "black"
+            },
+            {
                 "name": "Loading icon: Triangles",
                 "filename": "LoadingIcon1.flr",
                 "animation": "Default",
