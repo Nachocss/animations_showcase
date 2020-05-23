@@ -5,6 +5,8 @@ import 'package:animations/model/animationVO.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:flutter/services.dart' show rootBundle;
+
 void main() {
   test('parse animations in json file', () async {
     String text =
@@ -16,7 +18,7 @@ void main() {
       print('Howdy, ${animation.filename}!');
     });
 
-    expect(AnimationVO.fromJson(decodedJson[0]).filename, "assets/SpaceX.flr");
+    expect(AnimationVO.fromJson(decodedJson[0]).filename, "SpaceX.flr");
   });
 
   test('create widgets', () async {
@@ -32,5 +34,31 @@ void main() {
         child: Text(animationVO.name),
       ));
     });
+  });
+
+  test('check if file exists', () async {
+    expect(
+        await File("assets" + Platform.pathSeparator + "SpaceX.flr").exists(),
+        true);
+    expect(
+        await File("assets" + Platform.pathSeparator + "LoadingIcon.flr")
+            .exists(),
+        false);
+    expect(File("assets" + Platform.pathSeparator + "SpaceX.flr").existsSync(),
+        true);
+    expect(
+        File("assets" + Platform.pathSeparator + "LoadingIcon.flr")
+            .existsSync(),
+        false);
+
+    var returnValue = false;
+    try {
+      await rootBundle.load("assets" + Platform.pathSeparator + "ASd.flr");
+    } catch (FlutterError) {
+      print("Catch");
+      returnValue = true;
+    }
+
+    expect(returnValue, true);
   });
 }

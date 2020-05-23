@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:animations/model/animationDAO.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +11,7 @@ abstract class ShowcaseState extends Equatable {
 }
 
 class ShowcaseListing extends ShowcaseState {
-  final List<Widget> buttons = null; //AnimationDAO.getAnimationsFromJson() as List<Widget>;
-
-  @override
-  List<dynamic> get props => [buttons];
+  const ShowcaseListing();
 }
 
 class AnimationPlaying extends ShowcaseState {
@@ -24,7 +20,8 @@ class AnimationPlaying extends ShowcaseState {
   final Color backgroundColor;
   final String name;
 
-  const AnimationPlaying({this.name, this.filename, this.animationName, this.backgroundColor});
+  const AnimationPlaying(
+      {this.name, this.filename, this.animationName, this.backgroundColor});
 
   @override
   List<Object> get props => [filename, animationName, backgroundColor];

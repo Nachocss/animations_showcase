@@ -1,9 +1,7 @@
-
 import 'package:animations/bloc/simple_bloc_delegate.dart';
 import 'package:animations/widgets/animation_viewer.dart';
 import 'package:animations/widgets/animations_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/bloc.dart';
@@ -43,7 +41,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Animations showcase by Nacho Sierra"),
@@ -51,10 +48,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: BlocBuilder<ShowcaseBloc, ShowcaseState>(
         builder: (context, state) {
           if (state is ShowcaseListing) {
-            return AnimationList(buttons: state.buttons);
+            return AnimationList();
           }
           if (state is AnimationPlaying) {
-            return SimpleAnimationViewer(filename: state.filename, animation: state.animationName, backgroundColor: state.backgroundColor, name: state.name);
+            return SimpleAnimationViewer(
+              filename: state.filename,
+              animation: state.animationName,
+              backgroundColor: state.backgroundColor,
+              name: state.name,
+            );
           }
         },
       ),

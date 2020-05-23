@@ -2,13 +2,11 @@ import 'package:animations/model/animationDAO.dart';
 import 'package:flutter/material.dart';
 
 class AnimationList extends StatelessWidget {
-  List<Widget> buttons;
-  AnimationList({Key key, this.buttons}) : super(key: key);
+
+  AnimationList({Key key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print("Building animation list");
-
     return FutureBuilder<List<Widget>>(
       future: AnimationDAO.getAnimationsFromJson(context),
       builder: (context, AsyncSnapshot<List<Widget>> snapshot) {
@@ -25,34 +23,13 @@ class AnimationList extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               padding: EdgeInsets.all(15.0),
-              children: buttons ??
-                  <Widget>[
-                    Text("Empty"),
-                  ],
+              children: <Widget>[
+                Text("Empty"),
+              ],
             ),
           );
         }
       },
     );
-/*
-    return Container(
-      child: ListView(
-        shrinkWrap: true,
-        padding: EdgeInsets.all(15.0),
-        children: buttons ??
-            <Widget>[
-              Text("Empty"),
-              FlatButton(
-                onPressed: () => BlocProvider.of<ShowcaseBloc>(context).add(
-                  ShowAnimation(
-                      filename: "assets/SpaceX.flr",
-                      animationName: "Full",
-                      backgroundColor: Colors.black),
-                ),
-                child: Text("SpaceX"),
-              ),
-            ],
-      ),
-    );*/
   }
 }
