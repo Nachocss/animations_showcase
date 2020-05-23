@@ -24,6 +24,12 @@
                 "filename": "LoadingIcon3.flr",
                 "animation": "Untitled",
                 "background": "white"
+            },
+            {
+                "name": "Loading icon: Satellite",
+                "filename": "LoadingIcon4.flr",
+                "animation": "Untitled",
+                "background": "white"
             }
         ]
     }
