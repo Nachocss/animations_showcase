@@ -8,9 +8,21 @@
                 "background": "black"
             },
             {
-                "name": "Simple loading icon",
+                "name": "Loading icon: Triangles",
                 "filename": "LoadingIcon1.flr",
                 "animation": "Default",
+                "background": "white"
+            },
+            {
+                "name": "Loading icon: Three dots",
+                "filename": "LoadingIcon2.flr",
+                "animation": "Untitled",
+                "background": "white"
+            },
+            {
+                "name": "Loading icon: Clock",
+                "filename": "LoadingIcon3.flr",
+                "animation": "Untitled",
                 "background": "white"
             }
         ]
