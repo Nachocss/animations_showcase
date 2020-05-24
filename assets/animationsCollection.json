@@ -20,6 +20,12 @@
                 "background": "ARGB,255,4,32,38"
             },
             {
+                "name": "Retrofuturist console",
+                "filename": "RetrofuturePC.flr",
+                "animation": "ErrorBoot",
+                "background": "ARGB,255,0,2,0"
+            },
+            {
                 "name": "Splash Screen",
                 "filename": "SplashScreen.flr",
                 "animation": "LongVersion",

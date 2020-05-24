@@ -41,6 +41,10 @@ class AnimationListElement {
               Icons.donut_large,
               color: Colors.redAccent,
             ),
+            title: Text(
+              animationVO.name,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             onTap: () => BlocProvider.of<ShowcaseBloc>(context).add(
               ShowAnimation(
                 filename: animationVO.filename,
@@ -48,10 +52,6 @@ class AnimationListElement {
                 backgroundColor: _parseColor(animationVO.backgroundColor),
                 name: animationVO.name,
               ),
-            ),
-            title: Text(
-              animationVO.name,
-              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
         ),
