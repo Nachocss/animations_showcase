@@ -21,6 +21,7 @@ class _AnimationListState extends State<AnimationList> {
     return FutureBuilder<List<Widget>>(
       future: AnimationListElement.getAnimationsFromJson(context),
       builder: (context, AsyncSnapshot<List<Widget>> snapshot) {
+
         return Scaffold(
           backgroundColor: Colors.redAccent,
           appBar: AppBar(
@@ -44,7 +45,6 @@ class _AnimationListState extends State<AnimationList> {
                       ),
                       child: snapshot.data[index],
                     );
-                    // return MyTransition(snapshot.data[index], animation);
                   },
                   shrinkWrap: true,
                   padding: EdgeInsets.all(15.0),
@@ -72,17 +72,5 @@ class _AnimationListState extends State<AnimationList> {
         });
       }
     });
-  }
-
-  MyTransition(Widget widget, Animation animation) {
-    var begin = Offset(0.0, 1.0);
-    var end = Offset.zero;
-    var tween = Tween(begin: begin, end: end);
-    var offsetAnimation = animation.drive(tween);
-    print("MYTRANSITION");
-    return SlideTransition(
-      position: offsetAnimation,
-      child: widget,
-    );
   }
 }
