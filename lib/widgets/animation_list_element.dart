@@ -23,17 +23,39 @@ class AnimationListElement {
     var animationList = <Widget>[];
     jsonObjects.forEach((object) {
       var animationVO = AnimationVO.fromJson(object);
-      animationList.add(FlatButton(
-        onPressed: () => BlocProvider.of<ShowcaseBloc>(context).add(
-          ShowAnimation(
-            filename: animationVO.filename,
-            animationName: animationVO.animationName,
-            backgroundColor: _parseColor(animationVO.backgroundColor),
-            name: animationVO.name,
+
+      animationList.add(
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.red,
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
+          ),
+          margin: EdgeInsets.all(5),
+          child: ListTile(
+            leading: Icon(
+              Icons.donut_large,
+              color: Colors.redAccent,
+            ),
+            onTap: () => BlocProvider.of<ShowcaseBloc>(context).add(
+              ShowAnimation(
+                filename: animationVO.filename,
+                animationName: animationVO.animationName,
+                backgroundColor: _parseColor(animationVO.backgroundColor),
+                name: animationVO.name,
+              ),
+            ),
+            title: Text(
+              animationVO.name,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
         ),
-        child: Text(animationVO.name),
-      ));
+      );
     });
     return animationList;
   }
@@ -47,7 +69,7 @@ class AnimationListElement {
       case "REDACCENT":
         return Colors.redAccent;
     }
-   // return Color.fromARGB(100, 20,20,20);
+    // return Color.fromARGB(100, 20,20,20);
     if (color.startsWith(RegExp("ARGB"))) {
       List rgbValues = color.split(",");
       return Color.fromARGB(int.parse(rgbValues[1]), int.parse(rgbValues[2]),

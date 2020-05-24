@@ -15,16 +15,20 @@ class SplashScreen extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          Container(
-            decoration: BoxDecoration(color: Colors.redAccent),
-            child: FlareActor(
-              "assets" + Platform.pathSeparator + "SplashScreen.flr",
-              alignment: Alignment.center,
-              fit: BoxFit.contain,
-              animation: "LongVersion",
-              callback: (String animationName) {
-                BlocProvider.of<ShowcaseBloc>(context).add(ListShowcase());
-              },
+          GestureDetector(
+            onDoubleTap: () =>
+                BlocProvider.of<ShowcaseBloc>(context).add(ListShowcase()),
+            child: Container(
+              decoration: BoxDecoration(color: Colors.redAccent),
+              child: FlareActor(
+                "assets" + Platform.pathSeparator + "SplashScreen.flr",
+                alignment: Alignment.center,
+                fit: BoxFit.contain,
+                animation: "LongVersion",
+                callback: (String animationName) {
+                  BlocProvider.of<ShowcaseBloc>(context).add(ListShowcase());
+                },
+              ),
             ),
           ),
         ],
