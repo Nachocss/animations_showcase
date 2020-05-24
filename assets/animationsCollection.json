@@ -14,6 +14,12 @@
                 "background": "black"
             },
             {
+                "name": "Alien (1979)",
+                "filename": "AlienPoster.flr",
+                "animation": "Intro",
+                "background": "black"
+            },
+            {
                 "name": "Splash Screen",
                 "filename": "SplashScreen.flr",
                 "animation": "LongVersion",
